@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,6 +36,16 @@ Route::get(
     'students/restore/{id}',
     [StudentController::class, 'trash']
 )->name('students.restore');
+
+Route::get(
+    'courses',
+    [CourseController::class, 'index']
+)->name('courses.index');
+
+Route::get(
+    'courses/{id}',
+    [CourseController::class, 'show']
+)->name('courses.show');
 
 
 Route::resource('students', StudentController::class)->middleware(['auth', 'verified']);

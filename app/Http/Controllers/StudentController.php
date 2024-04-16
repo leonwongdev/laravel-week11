@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
+use App\Models\Course;
 
 class StudentController extends Controller
 {
@@ -26,7 +27,7 @@ class StudentController extends Controller
     {
         //
         // This function is used to display the form for creating a new student.
-        return view('students.create');
+        return view('students.create', ['courses' => Course::all()]);
     }
 
     /**
@@ -35,7 +36,8 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         //
-        Student::create($request->validated());
+        $student = Student::create($request->validated());
+        $student->courses()->attach($request->course);
         // redirect to index
         return redirect()->route('students.index');
     }
@@ -68,7 +70,7 @@ class StudentController extends Controller
         return redirect()->route('students.index');
     }
 
-    // Trash a student
+    // Trash a student (Soft delete)
     public function trash($id)
     {
         Student::destroy($id);
