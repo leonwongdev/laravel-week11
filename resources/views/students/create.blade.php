@@ -36,6 +36,16 @@
                     </span>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="email">Select Course</label>
+                <select name="course" id="course">
+                    @foreach ($courses as $course)
+                        <option value="{{ $course->id }}">
+                            {{ $course->courseName }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
