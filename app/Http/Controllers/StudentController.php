@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
@@ -25,7 +26,6 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
         // This function is used to display the form for creating a new student.
         return view('students.create', ['courses' => Course::all()]);
     }
@@ -73,6 +73,7 @@ class StudentController extends Controller
     // Trash a student (Soft delete)
     public function trash($id)
     {
+        Log::info('students.trashed request received.');
         Student::destroy($id);
         return redirect()->route('students.index');
     }
