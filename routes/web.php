@@ -21,36 +21,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-// To trash a student
-// Route::get(
-//     'students/trash/{id}',
-//     [StudentController::class, 'trash']
-// )->name('students.trash')->middleware(['auth', 'verified']);
-
-// // Show all the trashed students
-// Route::get(
-//     'students/trashed/',
-//     [StudentController::class, 'trashed']
-// )->name('students.trashed');
-
-// Route::get(
-//     'students/restore/{id}',
-//     [StudentController::class, 'trash']
-// )->name('students.restore');
-
-// Route::get(
-//     'courses',
-//     [CourseController::class, 'index']
-// )->name('courses.index');
-
-// Route::get(
-//     'courses/{id}',
-//     [CourseController::class, 'show']
-// )->name('courses.show');
-
-
-// Route::resource('students', StudentController::class)->middleware(['auth', 'verified']);
-
 
 // Channel routes
 // To trash a student
